@@ -34,7 +34,8 @@ public class WordSearch {
         this.wordList = new TreeSet<String>();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                // if (position at [i][j] is an empty string, then insert a random letter)
+                // need this if check
+                    // if (position at [i][j] is an empty string, then insert a random letter)
                 this.puzzle[i][j] = ALPHABET.charAt((int)Math.random() * 26);
             }
         }
@@ -47,7 +48,7 @@ public class WordSearch {
     // then check to see if that word is in the list of words
     // selects them from a starting coordinate and an ending one
     public void select(int x1, int y1, int x2, int y2) {
-        String chosenWord = "";
+        String selection = "";
         // 0,0 -> 0, 5
         if (x1 == x2) {
 
