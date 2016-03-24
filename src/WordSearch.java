@@ -66,7 +66,12 @@ public class WordSearch {
                 this.selection += this.puzzle[i][y1];
             }
         } else { // diagonal
-
+			for (int i = x1; i < x2; i++) {
+				for (int j = y1; j < y2; j++) {
+					int k = i - j;
+					this.selection += this.puzzle[k][j];
+				}
+			}
         }
     }
 
