@@ -12,8 +12,9 @@ public class WordSearch {
     public static final int DEFAULT = 11;
     public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
-    private char[][] puzzle;
+    private char [][] puzzle;
     private SortedSet<String> wordList;
+    private SortedSet<String> wordsFound;
     private String selection;
 
     public WordSearch() {
@@ -32,7 +33,8 @@ public class WordSearch {
             throw new IllegalArgumentException("List cannot be empty");
         }
         this.puzzle = new char[n][n];
-        this.wordList = new TreeSet<String>();
+        this.wordList = new TreeSet<>();
+        this.wordsFound = new TreeSet<>();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 // need this if check
@@ -79,6 +81,12 @@ public class WordSearch {
     // into the puzzle
     public void setUp() {
 
+    }
+
+    public boolean isMatch() {
+        if (this.wordList.contains(this.getSelection())) {
+            this.wordsFound.add(this.wordList.remove());
+        }
     }
 
     public String getSelection() {
