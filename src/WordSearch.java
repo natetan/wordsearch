@@ -1,6 +1,4 @@
 import java.util.Collection;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 /**
  * Created by Yulong on 1/29/2016.
@@ -13,8 +11,8 @@ public class WordSearch {
     public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
     private char [][] puzzle;
-    private SortedSet<String> wordList;
-    private SortedSet<String> wordsFound;
+    private LinkedQueue<String> wordList;
+    private LinkedQueue<String> wordsFound;
     private String selection;
 
     public WordSearch() {
@@ -33,8 +31,8 @@ public class WordSearch {
             throw new IllegalArgumentException("List cannot be empty");
         }
         this.puzzle = new char[n][n];
-        this.wordList = new TreeSet<>();
-        this.wordsFound = new TreeSet<>();
+        this.wordList = new LinkedQueue<>();
+        this.wordsFound = new LinkedQueue<>();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 // need this if check
@@ -86,6 +84,9 @@ public class WordSearch {
     public boolean isMatch() {
         if (this.wordList.contains(this.getSelection())) {
             this.wordsFound.add(this.wordList.remove());
+            return true;
+        } else {
+            return false;
         }
     }
 
