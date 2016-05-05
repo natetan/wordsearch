@@ -82,7 +82,8 @@ public class WordSearch {
     }
 
     public boolean isMatch() {
-        if (this.wordList.contains(this.getSelection())) {
+        if (this.wordList.contains(this.getSelection()) ||
+                this.wordList.contains(this.reverse(this.getSelection()))) {
             this.wordsFound.add(this.wordList.remove());
             return true;
         } else {
